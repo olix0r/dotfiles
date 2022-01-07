@@ -7,7 +7,7 @@ sudo apt install -y vim zsh
 
 env > ~/.configured
 
-sudo chsh -s /usr/bin/zsh $(whoami)
+#sudo chsh -s /usr/bin/zsh $(whoami)
 
 # export EDITOR=vim
 # export VISUAL=$EDITOR
