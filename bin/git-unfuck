@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+base=${1:-main}
+
+branch=$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/\* \(.*\)/\1/')
+if [ -z "$branch" ]; then
+  echo "Could not parse branch" >&2
+  exit 1
+
+else
+  if [ $branch != $base ]; then
+    echo ":; :; git co $base"
+    git co $base
+  fi
+
+  echo ":; :; git fetch origin $base"
+  git fetch origin $base
+
+  echo ":; :; git pull origin $base"
+  git pull origin $base
+
+  if [ $branch != $base ]; then
+    echo ":; :; git co $branch"
+    git co $branch
+
+    echo ":; :; git rebase -i $base"
+    git rebase -i $base
+  fi
+fi

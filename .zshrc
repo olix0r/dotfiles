@@ -33,6 +33,8 @@ if [ -f $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
 fi
 
+export PATH="$HOME/bin:$PATH"
+
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 

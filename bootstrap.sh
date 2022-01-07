@@ -8,3 +8,5 @@ curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh |
 cp $DOTFILE_DIR/.zshrc $HOME/.zshrc
 
 cp $DOTFILE_DIR/.gitignore $HOME/.gitignore
+
+cp -rp $DOTFILE_DIR/bin $HOME/bin
