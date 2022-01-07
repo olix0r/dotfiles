@@ -6,3 +6,5 @@ sudo apt install -y vim zsh
 
 curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
 cp $DOTFILE_DIR/.zshrc $HOME/.zshrc
+
+cp $DOTFILE_DIR/.gitignore $HOME/.gitignore
