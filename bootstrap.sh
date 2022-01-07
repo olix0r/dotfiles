@@ -8,6 +8,7 @@ sudo apt install -y vim zsh
 env > ~/.configured
 
 #sudo chsh -s /usr/bin/zsh $(whoami)
+curl -sL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
 
 # export EDITOR=vim
 # export VISUAL=$EDITOR
