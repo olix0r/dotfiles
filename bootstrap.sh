@@ -4,7 +4,7 @@ set -eu
 
 DOTFILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
 
-sudo apt install -y htop less psmisc vim zsh
+sudo apt install -y htop less psmisc ripgrep vim zsh
 
 mkdir -p $HOME/bin
 
