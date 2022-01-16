@@ -19,22 +19,6 @@ export ZSH_THEME_GIT_PROMPT_UNTRACKED="${FG[190]}✭%{$reset_color%}"
 export PROMPT='%{$FG[123]%}#; ${HOST%%.*}:%{$FG[122]%}%~%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)
 %{$reset_color%}%{$FG[123]%}:;%{$reset_color%} '
 
-export HISTSIZE=100000
-export SAVEHIST=100000
-export HISTFILE=~/.zsh_history
-
-export EDITOR=vim
-export VISUAL=$EDITOR
-
-export LC_TIME=C
-export TZ=UTC
-
-if [ -f $HOME/.cargo/env ]; then
-  source $HOME/.cargo/env
-fi
-
-export PATH="$HOME/bin:$PATH"
-
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
