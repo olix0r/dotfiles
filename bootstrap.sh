@@ -4,7 +4,18 @@ set -eux
 
 DOTFILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
 
-sudo apt install -y htop less psmisc ripgrep vim zsh
+sudo apt install -y \
+    gnupg2 \
+    htop \
+    less \
+    locales \
+    psmisc \
+    ripgrep \
+    vim \
+    zsh
+
+sudo sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
+sudo locale-gen
 
 mkdir -p $HOME/bin
 
