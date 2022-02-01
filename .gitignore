@@ -1,3 +1,4 @@
+/.devcontainer
 /.vscode
-default.nix
-shell.nix
+/default.nix
+/shell.nix
