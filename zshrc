@@ -19,7 +19,7 @@ export ZSH_THEME_GIT_PROMPT_DELETED="${FG[160]}✖%{$reset_color%}"
 export ZSH_THEME_GIT_PROMPT_RENAMED="${FG[220]}➜%{$reset_color%}"
 export ZSH_THEME_GIT_PROMPT_UNMERGED="${FG[082]}═%{$reset_color%}"
 export ZSH_THEME_GIT_PROMPT_UNTRACKED="${FG[190]}✭%{$reset_color%}"
-export PROMPT='%{$FG[$PROMPT_PREFIX_COLOR]%}#; %{$FG[$PROMPT_DIR_COLOR]%}%1~%{$reset_color%}$(git_prompt_info)%{$reset_color%}
+export PROMPT='%{$FG[$PROMPT_PREFIX_COLOR]%}#; %{$FG[$PROMPT_DIR_COLOR]%}$(git_repo_name)%{$reset_color%}$(git_prompt_info)%{$reset_color%}
 %{$FG[$PROMPT_PREFIX_COLOR]%}:;%{$reset_color%} '
 
 bindkey -v
