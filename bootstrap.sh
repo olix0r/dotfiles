@@ -26,7 +26,6 @@ cp $DOTFILE_DIR/zshenv $HOME/zshenv
 (
     echo
     echo "export PROMPT_PREFIX_COLOR=$((RANDOM % 190 + 40))"
-    echo "export PROMPT_DIR_COLOR=$((RANDOM % 190 + 40))"
     echo "export PROMPT_GIT_COLOR=$((RANDOM % 190 + 40))"
 ) >>$HOME/.zshenv
 cp $DOTFILE_DIR/zshrc $HOME/.zshrc
