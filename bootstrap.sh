@@ -22,17 +22,7 @@ sudo locale-gen
 cp $DOTFILE_DIR/gitignore $HOME/.gitignore
 
 curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
-cp $DOTFILE_DIR/zshenv $HOME/zshenv
-(
-    if [ -d /workspaces ] && [ -n "$(ls /workspaces)" ]; then
-        p=$(find /workspaces -mindepth 1 -maxdepth 1 -printf '%P' | cksum | cut -d ' ' -f 1)
-    else
-        p=$RANDOM
-        g=$RANDOM
-    fi
-    echo
-    echo "export PROMPT_PREFIX_COLOR=$((p % (231 - 124) + 124))"
-) >>$HOME/.zshenv
+cp $DOTFILE_DIR/zshenv $HOME/.zshenv
 cp $DOTFILE_DIR/prompt.zsh $HOME/.prompt.zsh
 cp $DOTFILE_DIR/zshrc $HOME/.zshrc
 
