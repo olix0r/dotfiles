@@ -33,6 +33,7 @@ cp $DOTFILE_DIR/zshenv $HOME/zshenv
     echo
     echo "export PROMPT_PREFIX_COLOR=$((p % (231 - 124) + 124))"
 ) >>$HOME/.zshenv
+cp $DOTFILE_DIR/prompt.zsh $HOME/.prompt.zsh
 cp $DOTFILE_DIR/zshrc $HOME/.zshrc
 
 mkdir -p $HOME/bin
