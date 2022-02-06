@@ -6,10 +6,6 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -U colors && colors
 
-export ZSH_THEME_GIT_PROMPT_PREFIX=""
-export ZSH_THEME_GIT_PROMPT_CLEAN=""
-export ZSH_THEME_GIT_PROMPT_DIRTY=""
-export ZSH_THEME_GIT_PROMPT_SUFFIX=""
 function _color_per() {
 	local n=$(echo "$1" | cksum | cut -d ' ' -f 1)
 	echo "$((n % (231 - 124) + 124))"
@@ -25,16 +21,17 @@ function _prompt_color() {
 function _git_prompt() {
 	local name="$(git_repo_name)"
 	if [ -n "$name" ]; then
+		export ZSH_THEME_GIT_PROMPT_PREFIX=""
+		export ZSH_THEME_GIT_PROMPT_CLEAN=""
+		export ZSH_THEME_GIT_PROMPT_DIRTY=""
+		export ZSH_THEME_GIT_PROMPT_SUFFIX=""
 		local ref="$(git symbolic-ref HEAD)"
-		local info=""
-		if [ "${ref##refs/heads/}" != "main" ] && [ "${ref##refs/heads/}" != "master" ]; then
-			info="${FG[$(_color_per "$ref")]}@$(git_prompt_info)"
-		fi
+		local info="${FG[$(_color_per "$ref")]}@$(git_prompt_info)"
 		local sfx=""
-		if [ -z "$(git status --porcelain 2>/dev/null)" ]; then
-			sfx="${FG[118]}#$(git_prompt_short_sha) ✔"
-		else
-			sfx="${FG[133]}#$(git_prompt_short_sha) ✘"
+		local sha="$(git_prompt_short_sha)"
+		local sfx="${FG[$(_color_per "$sha")]}#${sha}"
+		if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+			sfx="${sfx} ✘"
 		fi
 		echo "${name}${info}${sfx}"
 	fi
