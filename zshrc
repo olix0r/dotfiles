@@ -6,22 +6,37 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -U colors && colors
 
-function git_prompt() {
-	name=$(git_repo_name)
-	if [ -n "$name" ]; then
-		local info="$(git_prompt_info)"
-	 	local g=$(echo "$info" | cksum | cut -d ' ' -f 1)
-		echo "$name${FG[$((g % (231 - 124) + 124))]}${info}#$(git_prompt_short_sha)"
+export ZSH_THEME_GIT_PROMPT_PREFIX=""
+export ZSH_THEME_GIT_PROMPT_CLEAN=""
+export ZSH_THEME_GIT_PROMPT_DIRTY=""
+export ZSH_THEME_GIT_PROMPT_SUFFIX=""
+function _color_per() {
+	local n=$(echo "$1" | cksum | cut -d ' ' -f 1)
+	echo "$((n % (231 - 124) + 124))"
+}
+function _prompt_color() {
+	local name=$(git_repo_name)
+	if [[ -n $name ]]; then
+		_color_per "${name}"
+	else
+		_color_per "$PWD"
 	fi
 }
-
-export PROMPT_PREFIX_COLOR=${PROMPT_PREFIX_COLOR:-$((RANDOM % 190 + 40))}
-export ZSH_THEME_GIT_PROMPT_PREFIX="@"
-export ZSH_THEME_GIT_PROMPT_DIRTY="${FG[133]}"
-export ZSH_THEME_GIT_PROMPT_CLEAN="${FG[118]}"
-export ZSH_THEME_GIT_PROMPT_SUFFIX=""
-export PROMPT='%{$FG[$PROMPT_PREFIX_COLOR]%}#; $(git_prompt)%{$reset_color%}
-%{$FG[$PROMPT_PREFIX_COLOR]%}:;%{$reset_color%} '
+function _git_prompt() {
+	local name=$(git_repo_name)
+	if [ -n "$name" ]; then
+		local info="$(git_prompt_info)"
+		local sfx=""
+		if [ -z "$(git status --porcelain 2>/dev/null)" ]; then
+			sfx="${FG[118]}#$(git_prompt_short_sha) ✔"
+		else
+			sfx="${FG[133]}#$(git_prompt_short_sha) ✘"
+		fi
+		echo "$name${FG[$(_color_per $(git symbolic-ref HEAD))]}@${info}${sfx}"
+	fi
+}
+export PROMPT='%{$FG[$(_prompt_color)]%}#; $(_git_prompt)%{$reset_color%}
+%{$FG[$(_prompt_color)]%}:;%{$reset_color%} '
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
