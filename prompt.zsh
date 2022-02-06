@@ -28,14 +28,14 @@ function _git_status_suffix() {
         local up="${ab%% *}"
         local dn="${ab##* }"
         local color="${FG[$(_color_per "$ab")]}"
-        if [ "$up" = "+0" ] && [ "$dn" = "-0" ]; then
-            echo
-        elif [ "$up" != "+0" ] && [ "$dn" = "-0" ]; then
+        if [ "$up" != "+0" ] && [ "$dn" = "-0" ]; then
             echo " ${color}↑"
         elif [ "$up" = "+0" ] && [ "$dn" != "-0" ]; then
             echo " ${color}↓"
         elif [ "$up" != "+0" ] && [ "$dn" != "-0" ]; then
             echo " ${color}⇅"
+        else
+            echo
         fi
     fi
 }
