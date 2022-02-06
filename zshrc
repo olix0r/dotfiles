@@ -23,16 +23,20 @@ function _prompt_color() {
 	fi
 }
 function _git_prompt() {
-	local name=$(git_repo_name)
+	local name="$(git_repo_name)"
 	if [ -n "$name" ]; then
-		local info="$(git_prompt_info)"
+		local ref="$(git symbolic-ref HEAD)"
+		local info=""
+		if [ "${ref##refs/heads/}" != "main" ] && [ "${ref##refs/heads/}" != "master" ]; then
+			info="${FG[$(_color_per "$ref")]}@$(git_prompt_info)"
+		fi
 		local sfx=""
 		if [ -z "$(git status --porcelain 2>/dev/null)" ]; then
 			sfx="${FG[118]}#$(git_prompt_short_sha) ✔"
 		else
 			sfx="${FG[133]}#$(git_prompt_short_sha) ✘"
 		fi
-		echo "$name${FG[$(_color_per $(git symbolic-ref HEAD))]}@${info}${sfx}"
+		echo "${name}${info}${sfx}"
 	fi
 }
 export PROMPT='%{$FG[$(_prompt_color)]%}#; $(_git_prompt)%{$reset_color%}
