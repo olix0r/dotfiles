@@ -22,17 +22,21 @@ function _git_status_suffix() {
     fi
 
     local ab="$(echo "$stat" | sed -n 's/^# branch\.ab //p')"
-    local up="${ab%% *}"
-    local dn="${ab##* }"
-    local color="${FG[$(_color_per "$ab")]}"
-    if [ "$up" = "+0" ] && [ "$dn" = "-0" ]; then
-        echo
-    elif [ "$up" != "+0" ] && [ "$dn" = "-0" ]; then
-        echo " ${color}↑"
-    elif [ "$up" = "+0" ] && [ "$dn" != "-0" ]; then
-        echo " ${color}↓"
-    elif [ "$up" != "+0" ] && [ "$dn" != "-0" ]; then
-        echo " ${color}⇅"
+    if [ -z "$ab" ]; then
+        echo " ↥"
+    else
+        local up="${ab%% *}"
+        local dn="${ab##* }"
+        local color="${FG[$(_color_per "$ab")]}"
+        if [ "$up" = "+0" ] && [ "$dn" = "-0" ]; then
+            echo
+        elif [ "$up" != "+0" ] && [ "$dn" = "-0" ]; then
+            echo " ${color}↑"
+        elif [ "$up" = "+0" ] && [ "$dn" != "-0" ]; then
+            echo " ${color}↓"
+        elif [ "$up" != "+0" ] && [ "$dn" != "-0" ]; then
+            echo " ${color}⇅"
+        fi
     fi
 }
 
