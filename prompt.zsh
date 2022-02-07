@@ -1,14 +1,16 @@
 autoload -U colors && colors
 
+export PROMPT_COLORS=(1 2 3 4 5 6 7 9 10 11 12 13 14 15)
 function _color_per() {
-    local n=$(echo "$1" | cksum | cut -d ' ' -f 1)
-    printf '%03d' "$((n % (15 - 9) + 9))"
+    local s=$(echo "$1" | cksum | cut -d ' ' -f 1)
+    local n=${#PROMPT_COLORS[@]}
+    printf '%03d' "${PROMPT_COLORS[$((s % n + 1))]}"
 }
 
 function _prompt_color() {
-    local name=$(git_repo_name)
-    if [[ -n $name ]]; then
-        _color_per "${name}"
+    local n=$(git_repo_name)
+    if [[ -n $n ]]; then
+        _color_per "$n"
     else
         _color_per "$PWD"
     fi
