@@ -2,7 +2,7 @@ autoload -U colors && colors
 
 function _color_per() {
     local n=$(echo "$1" | cksum | cut -d ' ' -f 1)
-    echo "$((n % (231 - 124) + 124))"
+    printf '%03d' "$((n % (15 - 9) + 9))"
 }
 
 function _prompt_color() {
