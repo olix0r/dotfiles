@@ -19,15 +19,15 @@ sudo apt install -y \
 sudo sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
 sudo locale-gen
 
-cp $DOTFILE_DIR/gitignore $HOME/.gitignore
+cp "$DOTFILE_DIR"/gitignore "$HOME"/.gitignore
 
 curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
-cp $DOTFILE_DIR/zshenv $HOME/.zshenv
-cp $DOTFILE_DIR/prompt.zsh $HOME/.prompt.zsh
-cp $DOTFILE_DIR/zshrc $HOME/.zshrc
+cp "$DOTFILE_DIR"/zshenv "$HOME"/.zshenv
+cp "$DOTFILE_DIR"/prompt.zsh "$HOME"/.prompt.zsh
+cp "$DOTFILE_DIR"/zshrc "$HOME"/.zshrc
 
-mkdir -p $HOME/bin
-cp -rp $DOTFILE_DIR/bin/* $HOME/bin/
+mkdir -p $"HOME"/bin
+cp -rp "$DOTFILE_DIR"/bin/* "$HOME"/bin/
 
 if command -v k3d >/dev/null 2>&1 ; then
     k3d kubeconfig merge -d 2>/dev/null || true
