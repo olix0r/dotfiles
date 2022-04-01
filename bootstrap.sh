@@ -29,7 +29,7 @@ cp "$DOTFILE_DIR"/zshrc "$HOME"/.zshrc
 mkdir -p "$HOME"/bin
 cp -rp "$DOTFILE_DIR"/bin/* "$HOME"/bin/
 
-curl --proto '=https' --tlsv1.2 -fLsSv https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.11/cargo-nextest-0.9.11-x86_64-unknown-linux-gnu.tar.gz \
+curl --proto '=https' --tlsv1.2 -fLsSv https://get.nexte.st/latest/linux \
     | tar xzvf - -C "$HOME"/bin
 
 if command -v k3d >/dev/null 2>&1 ; then
