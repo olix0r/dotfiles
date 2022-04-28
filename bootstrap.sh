@@ -4,6 +4,7 @@ set -eux
 
 DOTFILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
 
+sudo apt update
 sudo apt install -y \
     gnupg2 \
     htop \
