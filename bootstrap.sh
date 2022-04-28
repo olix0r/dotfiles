@@ -12,6 +12,7 @@ sudo apt install -y \
     jq \
     less \
     locales \
+    man \
     psmisc \
     ripgrep \
     vim \
@@ -30,7 +31,7 @@ cp "$DOTFILE_DIR"/zshrc "$HOME"/.zshrc
 mkdir -p "$HOME"/bin
 cp -rp "$DOTFILE_DIR"/bin/* "$HOME"/bin/
 
-curl --proto '=https' --tlsv1.2 -fLsSv https://get.nexte.st/latest/linux \
+curl --proto '=https' --tlsv1.3 -fLsSv https://get.nexte.st/latest/linux \
     | tar xzvf - -C "$HOME"/bin
 
 if command -v k3d >/dev/null 2>&1 ; then
