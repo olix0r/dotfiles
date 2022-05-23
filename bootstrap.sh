@@ -27,6 +27,7 @@ curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh
 cp "$DOTFILE_DIR"/zshenv "$HOME"/.zshenv
 cp "$DOTFILE_DIR"/prompt.zsh "$HOME"/.prompt.zsh
 cp "$DOTFILE_DIR"/zshrc "$HOME"/.zshrc
+cp -r "$DOTFILE_DIR"/omz/plugins/* "$HOME"/.oh-my-zsh/custom/plugins/
 
 mkdir -p "$HOME"/bin
 cp -rp "$DOTFILE_DIR"/bin/* "$HOME"/bin/
