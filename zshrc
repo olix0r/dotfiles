@@ -8,6 +8,8 @@ source $HOME/.prompt.zsh
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
+alias scurl="curl --proto '=https' --tlsv1.3 -sSfL"
+
 cpwd() {
 	cd $(pwd -P)
 }
