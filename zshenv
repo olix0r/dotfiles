@@ -17,5 +17,3 @@ if [ -f $HOME/.cargo/env ]; then
 fi
 
 export PATH="$HOME/bin:$PATH"
-
-

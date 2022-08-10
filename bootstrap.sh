@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eux
 
@@ -32,8 +32,10 @@ cp -r "$DOTFILE_DIR"/omz/plugins/* "$HOME"/.oh-my-zsh/custom/plugins/
 mkdir -p "$HOME"/bin
 cp -rp "$DOTFILE_DIR"/bin/* "$HOME"/bin/
 
-curl --proto '=https' --tlsv1.3 -fLsSv https://get.nexte.st/latest/linux \
-    | tar xzvf - -C "$HOME"/bin
+if (command -v cargo && ! command -v cargo-nextest) >/dev/null 2>&1 ; then
+    curl --proto '=https' --tlsv1.3 -fLsSv https://get.nexte.st/latest/linux \
+        | tar xzvf - -C "$HOME"/bin
+fi
 
 if command -v k3d >/dev/null 2>&1 ; then
     k3d kubeconfig merge -d 2>/dev/null || true
