@@ -1,4 +1,4 @@
-(( $+commands[ste] )) || return
+(( $+commands[step] )) || return
 
 # If the completion file doesn't exist yet, we need to autoload it and
 # bind it to `step`. Otherwise, compinit will have already done that
