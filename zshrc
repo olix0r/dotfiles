@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
-plugins=(docker gitfast just k3d kubectl linkerd rust)
+plugins=(docker gitfast just k3d kubectl linkerd pulumi rust step)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.prompt.zsh
 #zstyle :omz:plugins:ssh-agent agent-forwarding on
