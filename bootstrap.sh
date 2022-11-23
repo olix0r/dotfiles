@@ -38,5 +38,8 @@ if (command -v cargo && ! command -v cargo-nextest) >/dev/null 2>&1 ; then
 fi
 
 if command -v k3d >/dev/null 2>&1 ; then
-    k3d kubeconfig merge -d 2>/dev/null || true
+    k3d kubeconfig merge -da 2>/dev/null || true
+    if command -v just-k3d >/dev/null 2>&1 ; then
+        just-k3d use
+    fi
 fi
