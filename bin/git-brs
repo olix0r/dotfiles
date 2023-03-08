@@ -5,4 +5,4 @@ set -eu
 # Enumerate local git branches sorted by commit date from oldest to newest
 git branch \
     --sort=committerdate \
-    --format='%(refname:short)|%(upstream:remotename)|%(committerdate:iso)|%(upstream:track)' | column -ts'|'
+    --format='%(refname:short)|%(upstream:remotename)|%(committerdate:relative)|%(upstream:track)' | column -ts'|'
