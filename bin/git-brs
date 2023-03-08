@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+# Enumerate local git branches sorted by commit date from oldest to newest
+git branch --sort=committerdate \
+        --format="%(refname:short)\t%(upstream:remotename)\t%(committerdate:iso)\t%(upstream:track)" \
+    | column -ts"\t"
