@@ -23,7 +23,7 @@ sudo locale-gen
 
 cp "$DOTFILE_DIR"/gitignore "$HOME"/.gitignore
 
-if [ ! -d "$ZSH" ]; then
+if [ ! -d "$HOME"/.oh-my-zsh ]; then
     curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
 fi
 cp "$DOTFILE_DIR"/zshenv "$HOME"/.zshenv
