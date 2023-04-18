@@ -23,7 +23,9 @@ sudo locale-gen
 
 cp "$DOTFILE_DIR"/gitignore "$HOME"/.gitignore
 
-curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
+if [ ! -d "$ZSH" ]; then
+    curl --proto '=https' --tlsv1.3 -vfsSL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | zsh
+fi
 cp "$DOTFILE_DIR"/zshenv "$HOME"/.zshenv
 cp "$DOTFILE_DIR"/prompt.zsh "$HOME"/.prompt.zsh
 cp "$DOTFILE_DIR"/zshrc "$HOME"/.zshrc
