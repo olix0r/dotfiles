@@ -3,8 +3,8 @@ export SAVEHIST=100000
 export HISTFILE=~/.zsh_history
 
 # Use code as the default editor
-# export EDITOR=vim
-# export VISUAL=$EDITOR
+export EDITOR=vim
+export VISUAL="code --wait"
 
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
