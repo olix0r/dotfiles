@@ -2,8 +2,9 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 export HISTFILE=~/.zsh_history
 
-export EDITOR=vim
-export VISUAL=$EDITOR
+# Use code as the default editor
+# export EDITOR=vim
+# export VISUAL=$EDITOR
 
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
